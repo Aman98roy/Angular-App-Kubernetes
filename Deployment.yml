@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular-service
+  namespace: angular
+spec:
+  selector:
+    matchLabels:
+      app: angular-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: angular-app
+    spec:
+      containers:
+        - name: angular
+          image: angular-app-kubernetes:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+          resources:
+           limits:
+            cpu: "200m"   # 500 millicpu (0.5 CPU)
+            memory: "512Mi"  # 512 Mebibytes
+           requests:
+            cpu: "100m"   # 100 millicpu (0.1 CPU)
+            memory: "256Mi"  # 256 Mebibytes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: angular-service
+  namespace: angular
+spec:
+  selector:
+    app: angular-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: angular-ingress
+  namespace: angular
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: your-angular-app.example.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /aman
+        backend:
+          service:
+            name: angular-service
+            port:
+              number: 80
