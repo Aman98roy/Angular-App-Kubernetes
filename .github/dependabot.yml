@@ -5,7 +5,7 @@
 
 version: 2
 registries:
-  npm-npmjs:
+  npm-nexus:
     type: npm-registry
     url: https://registry.npmjs.org
     token: ${{secrets.NPM_TOKEN}}
@@ -15,5 +15,5 @@ updates:
     schedule:
       interval: weekly
     registries:
-      - npm-npmjs
+      - npm-nexus
 
