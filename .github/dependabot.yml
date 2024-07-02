@@ -5,9 +5,9 @@
 
 version: 2
 registries:
-  npm-npmjs:
+  npmjs:
     type: npm-registry
-    url: https://registry.npmjs.org
+    url: https://registry.npmjs.com
 updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
