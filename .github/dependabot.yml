@@ -8,7 +8,6 @@ registries:
   npm-nexus:
     type: npm-registry
     url: https://registry.npmjs.org
-    token: ${{secrets.NPM_TOKEN}}
 updates:
   - package-ecosystem: npm
     directory: "/"
