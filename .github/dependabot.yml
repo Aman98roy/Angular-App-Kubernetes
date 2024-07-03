@@ -4,11 +4,11 @@
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
 version: 2
-registries:
-  npm-nexus:
-    type: npm-registry
-    url: https://registry.npmjs.org
-    token: ""
+# registries:
+#   npm-nexus:
+#     type: npm-registry
+#     url: https://registry.npmjs.org
+#     token: ""
 updates:
   - package-ecosystem: npm
     directory: "/"
